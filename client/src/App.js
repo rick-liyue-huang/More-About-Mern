@@ -5,6 +5,7 @@ import ProductList from "./pages/ProductList";
 import Product from "./pages/Product";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import Cart from './pages/Cart';
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
       {/*<ProductList />*/}
       {/*<Product />*/}
       {/*<SignUp />*/}
-      <SignIn />
+      {/*<SignIn />*/}
+      <Cart />
     </div>
   );
 }

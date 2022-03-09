@@ -9,7 +9,7 @@ const Container = styled.div`
 	height: 60px;
   padding-bottom: 20px;
 	margin-bottom: 10px;
-	border-bottom: 2px solid #61dafb;
+	border-bottom: 2px solid beige;
 `;
 
 const Wrapper = styled.div`
@@ -47,6 +47,7 @@ const Input = styled.input`
 const CenterComponent = styled.div`
   flex: 1;
 	text-align: center;
+	color: burlywood;
 `;
 
 const Logo = styled.h1`
