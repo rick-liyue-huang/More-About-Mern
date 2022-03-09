@@ -19,14 +19,7 @@ export const sliderItems = [
 		title: "Title Three",
 		desc: "Description Three",
 		bg: "f0e8fa",
-	},
-	{
-		id: 4,
-		img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-		title: "Title One",
-		desc: "Description One",
-		bg: "f5fafd",
-	},
+	}
 ];
 
 export const categories = [
