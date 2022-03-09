@@ -39,7 +39,7 @@ const Wrapper = styled.div`
 	display: flex;
 	// change position on line
 	transform: translateX(${props => props.slideIndex * -100}vw);
-	transition: all 1.3s ease;
+	//transition: all 1.3s ease;
 `;
 
 const Slide = styled.div`
@@ -88,9 +88,9 @@ const Slider = () => {
 
 	const handleClick = (direction) => {
 		if (direction === 'left') {
-			setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3)
+			setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2)
 		} else if (direction === 'right') {
-			setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0)
+			setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0)
 		}
 	};
 	return (
