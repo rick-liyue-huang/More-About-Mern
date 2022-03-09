@@ -7,9 +7,11 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import MapIcon from '@mui/icons-material/Map';
 import PermPhoneMsgIcon from '@mui/icons-material/PermPhoneMsg';
 import AttachEmailIcon from '@mui/icons-material/AttachEmail';
+import {mobile} from "../responsive";
 
 const Container = styled.div`
 	display: flex;
+  ${mobile({flexDirection: 'column'})}
 `;
 
 const LeftComponent = styled.div`
@@ -42,6 +44,7 @@ const SocialIcon = styled.div`
 const CenterComponent = styled.div`
 	flex: 1;
 	padding: 20px;
+  ${mobile({display: 'none'})}
 `;
 
 const Title = styled.h3`
@@ -64,6 +67,7 @@ const ListItem = styled.li`
 const RightComponent = styled.div`
 	flex: 1;
 	padding: 20px;
+  ${mobile({backgroundColor: 'lightgray'})}
 `;
 
 const ContactItem = styled.div`
