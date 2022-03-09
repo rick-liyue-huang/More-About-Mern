@@ -7,6 +7,9 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Container = styled.div`
 	height: 60px;
+  padding-bottom: 20px;
+	margin-bottom: 10px;
+	border-bottom: 2px solid #61dafb;
 `;
 
 const Wrapper = styled.div`
