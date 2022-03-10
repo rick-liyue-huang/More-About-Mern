@@ -2,13 +2,14 @@
 const express = require('express');
 const router = express.Router();
 const UserModel = require('../models/User');
+const CrypoJS = require('crypto-js');
 
 // signup
 router.post('/signup', async (req, res) => {
 	const newUser = new UserModel({
 		username: req.body.username,
 		email: req.body.email,
-		password: req.body.password
+		password: CrypoJS.AES.encrypt(req.body.password, process.env.PASSWORD_SECRET).toString()
 	});
 
 	try {
@@ -18,6 +19,35 @@ router.post('/signup', async (req, res) => {
 	} catch (err) {
 		console.error('saveUser has problems: ', err);
 		res.status(500).json(err);
+	}
+})
+
+// signin
+router.post('/signin', async (req, res) => {
+
+	try {
+		const user = await UserModel.findOne({
+			username: req.body.username
+		});
+
+		if (!user) {
+			return res.status(401).json('wrong user')
+		}
+		const hashPassword = CrypoJS.AES.decrypt(user.password, process.env.PASSWORD_SECRET);
+
+		const originPassword = hashPassword.toString(CrypoJS.enc.Utf8);
+
+		if (originPassword !== req.body.password) {
+			return res.status(401).json('wrong password');
+		}
+
+		// notice here for mongodb constructor
+		const {password, ...others} = user._doc;
+
+		res.status(200).json(others);
+
+	} catch (err) {
+		res.status(500).json(err)
 	}
 
 })
