@@ -15,8 +15,22 @@ router.post('/signup', async (req, res) => {
 
 	try {
 		const saveUser = await newUser.save();
+	/*
+
+			const accessToken = jwt.sign(
+				{
+					id: saveUser._id,
+					isAdmin: saveUser.isAdmin,
+				},
+				process.env.JWT_SECRET_KEY,
+				{
+					expiresIn: '3d'
+				}
+			)
+	*/
+
 		// console.log(saveUser);
-		res.status(201).json(saveUser)
+		res.status(201).json({saveUser, accessToken})
 	} catch (err) {
 		console.error('saveUser has problems: ', err);
 		res.status(500).json(err);
