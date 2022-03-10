@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const UserModel = require('../models/User');
 const CrypoJS = require('crypto-js');
+const jwt = require('jsonwebtoken');
 
 // signup
 router.post('/signup', async (req, res) => {
@@ -41,10 +42,23 @@ router.post('/signin', async (req, res) => {
 			return res.status(401).json('wrong password');
 		}
 
+		// here user is already signin
+		// so we need jwt
+		const accessToken = jwt.sign(
+			{
+				id: user._id,
+				isAdmin: user.isAdmin,
+			},
+				process.env.JWT_SECRET_KEY,
+			{
+				expiresIn: '3d'
+			}
+		)
+
 		// notice here for mongodb constructor
 		const {password, ...others} = user._doc;
 
-		res.status(200).json(others);
+		res.status(200).json({others, accessToken});
 
 	} catch (err) {
 		res.status(500).json(err)
